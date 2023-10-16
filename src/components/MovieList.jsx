@@ -1,10 +1,11 @@
 import React from 'react';
-import TrendingMovieItem from './TrendingMovieItem';
+import TrendingMovieItem from './MovieItem';
+import { StyledMovieList } from './MovieList.styled';
 
 const TrendingMovieList = ({ movies }) => {
   const showMovies = Array.isArray(movies) && movies.length;
   return (
-    <ul>
+    <StyledMovieList>
       {showMovies &&
         movies.map(movie => {
           return (
@@ -16,7 +17,7 @@ const TrendingMovieList = ({ movies }) => {
             />
           );
         })}
-    </ul>
+    </StyledMovieList>
   );
 };
 
