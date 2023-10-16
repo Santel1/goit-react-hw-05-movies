@@ -14,8 +14,6 @@ const MovieDetails = () => {
       try {
         const movieData = await fetchMoviesById(movieId);
         setMovieDetails(movieData);
-        // const genreNamess = movieDetails.genres.map(genre => genre.name);
-        // console.log(genreNamess);
       } catch (error) {
       } finally {
       }
