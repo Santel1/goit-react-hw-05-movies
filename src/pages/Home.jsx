@@ -5,10 +5,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'services/api';
 import { StyledHome } from './Home.styled';
+import { useLocation } from 'react-router-dom';
 const Home = () => {
   const [movies, setMovies] = useState(null);
   const [isLoadingState, setIsLoadingState] = useState(false);
   const [errorState, setErrorState] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -28,7 +30,7 @@ const Home = () => {
     <StyledHome>
       {isLoadingState && <Loader />}
       {errorState && <Error>{errorState}</Error>}
-      <MovieList movies={movies} />
+      <MovieList state={{ from: location }} movies={movies} />
     </StyledHome>
   );
 };

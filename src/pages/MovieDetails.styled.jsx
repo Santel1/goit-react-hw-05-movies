@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledMovieDetails = styled.div`
-  padding: 0px 15px;
   .genres-list {
     list-style: none;
     display: flex;
@@ -16,14 +15,39 @@ export const StyledMovieDetails = styled.div`
     font-size: 20px;
   }
   .link {
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
     color: black;
     border: 1px solid black;
-    padding: 5px;
-    border-radius: 5px;
-    text-decoration: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 22px;
+    transition: all 0.3s;
   }
   .link:hover {
-    border: 1px solid #ff6b6b;
-    color: #ff6b6b;
+    background-color: #696969;
+    color: white;
+    border: 1px solid white;
+  }
+`;
+
+export const StyledMovieContainer = styled.div`
+  padding: 0px 15px;
+  .back-link {
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 22px;
+    transition: all 0.3s;
+  }
+  .back-link:hover {
+    background-color: #696969;
+    color: white;
+    border: 1px solid white;
   }
 `;

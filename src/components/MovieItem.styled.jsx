@@ -7,6 +7,6 @@ export const StyledMovieItem = styled.li`
     color: black;
   }
   .link:hover {
-    color: #ff6b6b;
+    color: #696969;
   }
 `;

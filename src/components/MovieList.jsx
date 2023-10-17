@@ -2,7 +2,7 @@ import React from 'react';
 import TrendingMovieItem from './MovieItem';
 import { StyledMovieList } from './MovieList.styled';
 
-const TrendingMovieList = ({ movies }) => {
+const TrendingMovieList = ({ movies, state }) => {
   const showMovies = Array.isArray(movies) && movies.length;
   return (
     <StyledMovieList>
@@ -10,6 +10,7 @@ const TrendingMovieList = ({ movies }) => {
         movies.map(movie => {
           return (
             <TrendingMovieItem
+              state={state}
               key={movie.id}
               id={movie.id}
               title={movie.title}

@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledMovieList = styled.ul`
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  list-style: circle;
 `;

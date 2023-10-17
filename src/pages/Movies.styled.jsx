@@ -16,9 +16,10 @@ export const StyledMovies = styled.div`
     outline: none;
   }
   .input:hover,
-  input:focus {
-    border: 1px solid #ff6b6b;
-    color: #ff6b6b;
+  .input:focus {
+    border: 1px solid #696969;
+    color: #696969;
+    background-color: transparent;
   }
 
   .input-btn {
@@ -26,9 +27,29 @@ export const StyledMovies = styled.div`
     border: 1px solid black;
     background-color: transparent;
     fill: black;
+    transition: all 0.3s;
+    cursor: pointer;
   }
   .input-btn:hover {
-    background-color: #ff6b6b;
+    background-color: #696969;
     fill: white;
+    border: 1px solid white;
   }
+
+  /* .back-link {
+    display: inline-block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 22px;
+    transition: all 0.3s;
+  }
+  .back-link:hover {
+    background-color: #696969;
+    color: white;
+    border: 1px solid white;
+  } */
 `;

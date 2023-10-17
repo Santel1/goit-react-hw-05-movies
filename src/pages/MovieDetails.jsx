@@ -2,9 +2,20 @@ import Error from 'components/Error';
 import { Loader } from 'components/Loader';
 import React from 'react';
 import { useEffect, useState, Suspense, lazy } from 'react';
-import { NavLink, Route, Routes, useParams } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { fetchMoviesById } from 'services/api';
-import { StyledMovieDetails } from './MovieDetails.styled';
+import {
+  StyledMovieContainer,
+  StyledMovieDetails,
+} from './MovieDetails.styled';
+import { useRef } from 'react';
 
 const MovieCreditsPage = lazy(() => import('pages/Cast'));
 const MovieReviewsPage = lazy(() => import('pages/Reviews'));
@@ -14,6 +25,10 @@ const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [isLoadingState, setIsLoadingState] = useState(false);
   const [errorState, setErrorState] = useState(null);
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from ?? '/');
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
   useEffect(() => {
     if (!movieId) return;
@@ -41,14 +56,22 @@ const MovieDetails = () => {
   };
 
   return (
-    <div>
+    <StyledMovieContainer>
       {isLoadingState && <Loader />}
       {errorState && <Error>{errorState}</Error>}
+      <Link className="back-link" to={backLinkHref.current}>
+        Go back
+      </Link>
       {movieDetails !== null && (
         <StyledMovieDetails>
           <img
-            src={`https://image.tmdb.org/t/p/w200/${movieDetails.poster_path}`}
-            alt=""
+            src={
+              movieDetails.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                : defaultImg
+            }
+            width={350}
+            alt="poster"
           />
           <h1>{movieDetails.title ?? movieDetails.name}</h1>
           <p>Rating: {movieDetails.vote_average}</p>
@@ -79,7 +102,7 @@ const MovieDetails = () => {
           </Suspense>
         </StyledMovieDetails>
       )}
-    </div>
+    </StyledMovieContainer>
   );
 };
 

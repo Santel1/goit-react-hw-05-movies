@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as IconSearch } from 'images/searchBtn.svg';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { fetchMoviesByName } from 'services/api';
 import MovieList from 'components/MovieList';
 import { Loader } from 'components/Loader';
@@ -12,6 +12,7 @@ const Movies = () => {
   const [movie, setMovie] = useState(null);
   const [isLoadingState, setIsLoadingState] = useState(false);
   const [errorState, setErrorState] = useState(null);
+  const location = useLocation();
 
   const query = searchParams.get('query');
 
@@ -50,7 +51,9 @@ const Movies = () => {
       </form>
 
       <section>
-        {movie !== null && <MovieList movies={movie.results} />}
+        {movie !== null && (
+          <MovieList state={{ from: location }} movies={movie.results} />
+        )}
       </section>
     </StyledMovies>
   );
